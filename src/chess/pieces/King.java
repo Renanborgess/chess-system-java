@@ -2,17 +2,17 @@ package chess.pieces;
 
 import boardgame.Board;
 import boardgame.Position;
-import chess.ChessMath;
+import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.Color;
 
 public class King extends ChessPiece {
 
-	private ChessMath chessMatch;
-
-	public King(Board board, Color color, ChessMath chessMath) {
+	private ChessMatch chessMatch;
+	
+	public King(Board board, Color color, ChessMatch chessMatch) {
 		super(board, color);
-		this.chessMatch = chessMath;
+		this.chessMatch = chessMatch;
 	}
 
 	@Override
@@ -21,16 +21,15 @@ public class King extends ChessPiece {
 	}
 
 	private boolean canMove(Position position) {
-		ChessPiece p = (ChessPiece) getBoard().piece(position);
+		ChessPiece p = (ChessPiece)getBoard().piece(position);
 		return p == null || p.getColor() != getColor();
 	}
-
+	
 	private boolean testRookCastling(Position position) {
-		ChessPiece p = (ChessPiece) getBoard().piece(position);
+		ChessPiece p = (ChessPiece)getBoard().piece(position);
 		return p != null && p instanceof Rook && p.getColor() == getColor() && p.getMoveCount() == 0;
-
 	}
-
+	
 	@Override
 	public boolean[][] possibleMoves() {
 		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColumns()];
