@@ -1,7 +1,5 @@
 package boardgame;
 
-import javax.management.loading.ClassLoaderRepository;
-
 public class Board {
 
 	private int rows;
